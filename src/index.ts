@@ -82,6 +82,7 @@ export const jwt = <
 	secret,
 	// Start JWT Header
 	alg = 'HS256',
+  typ,
 	crit,
 	schema,
 	// End JWT Header
@@ -122,6 +123,7 @@ JWTOption<Name, Schema>) => {
 			name,
 			secret,
 			alg,
+      typ,
 			crit,
 			schema,
 			nbf,
@@ -140,7 +142,8 @@ JWTOption<Name, Schema>) => {
 				exp: undefined
 			}).setProtectedHeader({
 				alg,
-				crit
+				crit,
+        typ
 			})
 
 			if (nbf) jwt = jwt.setNotBefore(nbf)
